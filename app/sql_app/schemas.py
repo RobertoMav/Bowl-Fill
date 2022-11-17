@@ -15,3 +15,11 @@ class Data(DataBase):
 
     class Config:
         orm_mode = True
+
+class DataDelete(BaseModel):
+    id_deleted: int
+
+    class Config:
+        orm_mode = True
+
+
