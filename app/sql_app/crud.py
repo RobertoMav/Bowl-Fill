@@ -28,7 +28,6 @@ def delete_data(db: Session, data: schemas.DataDelete):
 
 def delete_data_all(db: Session, skip: int = 0, limit: int = 500):
     db_data = get_all_data(db, skip, limit)
-    print(db_data)
     for i in range(len(db_data)):
         db.delete(db_data[i])
         db.commit()

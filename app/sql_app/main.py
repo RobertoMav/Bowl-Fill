@@ -47,6 +47,6 @@ def delete_data(data: schemas.DataDelete, db: Session = Depends(get_db)):
     return crud.delete_data(db, data=data)
 
 
-@app.delete("/data/KILL_EVERYONE")
+@app.delete("/data/")
 def DESTROY_EARTH(skip: int = 0, limit: int = 500, db: Session = Depends(get_db)):
     return crud.delete_data_all(db, skip=skip, limit=limit)

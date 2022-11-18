@@ -1,9 +1,11 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
+FROM python:3.9
 
-COPY ./requirements.txt /app/requirements.txt
+WORKDIR /code
 
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY ./requirements.txt /code/requirements.txt
 
-RUN apt-get update && apt-get install libgl1 -y
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY ./app /app/app
+COPY ./app /code/app/sql_app
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
